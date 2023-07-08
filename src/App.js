@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import Input from "./components/Input";
-import {useState} from "react";
+import React, {useState} from "react";
+import Button from "./components/Button";
 
 function App() {
 
@@ -66,7 +67,7 @@ function App() {
                 <label>나이</label>
                 <Input type='number' id='age' value={age} onChange={ageInputHandler} placeholder='나이를 입력하세요'/>
 
-                <button type='submit' onClick={formSubmitHandler} className='signup-bt'>가입하기</button>
+                <Button type='submit' onClick={formSubmitHandler} className='signup-bt'>가입하기</Button>
             </form>
         </div>
     );
