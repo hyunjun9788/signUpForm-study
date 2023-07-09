@@ -66,27 +66,40 @@ function App() {
         // setAge(e.target.value)
     }
 
-    const formSubmitHandler = (e)=>{
+    const formSubmitHandler = (e)=> {
         e.preventDefault()
+        console.log(input)
 
         const fields = [
-            {value:input.email, message:"'@'를 포함하여 이메일을 작성해주세요."},
-            {value:input.password, message:'비밀번호를 입력해주세요.'},
-            { value: input.rePassword, message: '비밀번호 재확인을 입력해주세요.' },
-            { value: input.name, message: '이름을 입력해주세요.' },
-            { value: input.age, message: '나이를 입력해주세요.' },
+            {value: input.email, message: "'@'를 포함하여 이메일을 작성해주세요."},
+            {value: input.password, message: '비밀번호를 입력해주세요.'},
+            {value: input.rePassword, message: '비밀번호 재확인을 입력해주세요.'},
+            {value: input.name, message: '이름을 입력해주세요.'},
+            {value: input.age, message: '나이를 입력해주세요.'},
         ]
 
-        for(const field of fields){
-        if(field.value.trim() === ''){
-            alert(field.message);
-            return
-        }}
-        alert('가입이 완료되었습니다.')
+        for (const field of fields) {
+            if (field.value.trim() === '') {
+                alert(field.message);
+                return
+            }
+
+        }
+        alert(`${input.name}님 환영합니다!`)
+
+
+        setInput({
+            email: '',
+            password: '',
+            rePassword: '',
+            name: '',
+            age: '',
+        });
+
     }
     return (
         <div className='container'>
-            <form className='signup-form'>
+            <form className='signup-form' onSubmit={formSubmitHandler}>
                 <h1>회원가입</h1>
 
                 <label>이메일<span className='required'>필수<span className='star'>＊</span></span></label>
@@ -104,7 +117,7 @@ function App() {
                 <label>나이</label>
                 <Input type='number' id='age' value={input.age} onChange={ageInputHandler} placeholder='나이를 입력하세요'/>
 
-                <Button type='submit' onClick={formSubmitHandler} className='signup-bt'>가입하기</Button>
+                <Button type='submit' className='signup-bt'>가입하기</Button>
             </form>
         </div>
     );
