@@ -1,123 +1,63 @@
-
 import './App.css';
-import Input from "./components/Input";
+import InputContainer from "./components/InputContainer";
 import React, {useState} from "react";
 import Button from "./components/Button";
+import Header from "./components/Header";
 
 function App() {
 
-    const [input, setInput] = useState({
-        email:'',
-        password:'',
-        rePassword:'',
-        name:'',
-        age:''
-    })
-    // const [email, setEmail] = useState('')
-    // const [password, setPassword] = useState('')
-    // const [rePassword, setRePassword] = useState('')
-    // const [name, setName] = useState('')
-    // const [age, setAge] = useState('')
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [rePassword, setRePassword] = useState('')
+    const [name, setName] = useState('')
+    const [age, setAge] = useState('')
 
 
-    const emailInputHandler=(e)=>{
-        setInput((prevState)=>{
-            return{
-                ...prevState,
-                email:e.target.value
-            }
-        })
-        // setEmail(e.target.value)
-    }
-    const passwordInputHandler=(e)=>{
-        setInput((prevState)=>{
-            return{
-                ...prevState,
-                password:e.target.value
-            }
-        })
-        // setPassword(e.target.value)
-    }
-    const rePasswordInputHandler=(e)=>{
-        setInput((prevState)=>{
-            return{
-                ...prevState,
-                rePassword:e.target.value
-            }
-        })
-        // setRePassword(e.target.value)
-    }
-    const nameInputHandler=(e)=>{
-        setInput((prevState)=>{
-            return{
-                ...prevState,
-                name:e.target.value
-            }
-        })
-        // setName(e.target.value)
-    }
-    const ageInputHandler=(e)=>{
-        setInput((prevState)=>{
-            return{
-                ...prevState,
-                age:e.target.value
-            }
-        })
-        // setAge(e.target.value)
-    }
 
-    const formSubmitHandler = (e)=> {
+    const changeEmailHandler=(e)=>{
+        setEmail(e.target.value)
+    }
+    const changePasswordHandler=(e)=>{
+        setPassword(e.target.value)
+    }
+    const changeRePasswordHandler=(e)=>{
+        setRePassword(e.target.value)
+    }
+    const changeNameHandler=(e)=>{
+        setName(e.target.value)
+    }
+    const changeAgeHandler=(e)=>{
+        setAge(e.target.value)
+    }
+    const submitHandler = (e) =>{
         e.preventDefault()
-        console.log(input)
-
-        const fields = [
-            {value: input.email, message: "'@'를 포함하여 이메일을 작성해주세요."},
-            {value: input.password, message: '비밀번호를 입력해주세요.'},
-            {value: input.rePassword, message: '비밀번호 재확인을 입력해주세요.'},
-            {value: input.name, message: '이름을 입력해주세요.'},
-            {value: input.age, message: '나이를 입력해주세요.'},
-        ]
-
-        for (const field of fields) {
-            if (field.value.trim() === '') {
-                alert(field.message);
-                return
-            }
-
+        if(password!==rePassword){
+            alert('비밀번호와 비밀번호 재확인에 입력한 값이 다릅니다.')
+            return
         }
-        alert(`${input.name}님 환영합니다!`)
+        alert('남현준님 환영합니다!')
 
 
-        setInput({
-            email: '',
-            password: '',
-            rePassword: '',
-            name: '',
-            age: '',
-        });
+        setEmail('')
+        setPassword('')
+        setRePassword('')
+        setName('')
+        setAge('')
 
     }
     return (
-        <div className='container'>
-            <form className='signup-form' onSubmit={formSubmitHandler}>
-                <h1>회원가입</h1>
+        <div className='box'>
+            <Header/>
+            <form onSubmit={submitHandler}>
+                <InputContainer labelName='이메일' onChangeEmail={changeEmailHandler} isRequired={true} inputType='email' placeholder={'이메일을 입력해주세요'}/>
+                <InputContainer labelName='비밀번호' onChangePassword={changePasswordHandler} isRequired={true} inputType='password' placeholder={'비밀번호를 입력해주세요'}/>
+                <InputContainer labelName='비밀번호 재확인' onChangePassword={changeRePasswordHandler} isRequired={true} inputType='password' placeholder={'비밀번호를 다시 입력해주세요'}/>
+                <InputContainer labelName='이름' onChangeName={changeNameHandler}  inputType='text' placeholder={'이름을 입력해주세요'}/>
+                <InputContainer labelName='나이' onChangeAge={changeAgeHandler}  inputType='number' placeholder={'나이를 입력해주세요'}/>
 
-                <label>이메일<span className='required'>필수<span className='star'>＊</span></span></label>
-                <Input type='text' id='email' value={input.email} onChange={emailInputHandler} placeholder='이메일을 입력하세요' required/>
 
-                <label>비밀번호<span className='required'>필수<span className='star'>＊</span></span></label>
-                <Input type='password' id='password' value={input.password} onChange={passwordInputHandler} placeholder='비밀번호를 입력하세요' required/>
-
-                <label>비밀번호 재확인<span className='required'>필수<span className='star'>＊</span></span></label>
-                <Input type='password' id='repassword' value={input.rePassword} onChange={rePasswordInputHandler} placeholder='비밀번호를 입력하세요' required/>
-
-                <label>이름</label>
-                <Input type='text' id='name' value={input.name} onChange={nameInputHandler}  placeholder='이름을 입력하세요' />
-
-                <label>나이</label>
-                <Input type='number' id='age' value={input.age} onChange={ageInputHandler} placeholder='나이를 입력하세요'/>
-
-                <Button type='submit' className='signup-bt'>가입하기</Button>
+                <Button type='submit'/>
             </form>
         </div>
     );

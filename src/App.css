@@ -1,18 +1,20 @@
-.container{
+.box{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-h1{
-  text-align: center;
-}
 
-.signup-form{
+}
+form{
+  width:400px;
+  position:relative;
   display:flex;
+  justify-content: center;
   flex-direction: column;
-
+  align-items: center;
 }
+
 .signup-bt{
   padding:10px 20px;
   border-radius: 30px;
@@ -21,6 +23,7 @@ h1{
   background-color: royalblue;
   color:white;
   font-weight: bold;
+  width:230px;
 }
 
 input{
@@ -29,24 +32,18 @@ input{
   padding-left: 20px;
 }
 
-label{
-  margin-top: 20px;
-  margin-left: 0;
-  text-align:start;
-  position:relative;
-}
 
-#password{
-  position:relative;
-}
 
-.required{
+.star{
   position: absolute;
   font-size:5px;
   height:35px;
   margin-top:-1px;
   margin-left: 5px;
-}
-.star{
   color:red;
+}
+.input-container{
+
+  margin-top: 20px;
+
 }

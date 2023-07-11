@@ -1,6 +1,10 @@
-function Button(props){
+import React from "react";
+
+function Button({type}){
     return(
-        <button type={props.type} onClick={props.onClick} className='signup-bt'>가입하기</button>
+
+    <button type={type} className='signup-bt'>가입하기</button>
+
     )
 }
 
