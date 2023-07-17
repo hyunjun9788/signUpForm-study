@@ -51,11 +51,11 @@ function App() {
         <div className='box'>
             <Header/>
             <form onSubmit={submitHandler}>
-                <InputContainer labelName='이메일' onChange={changeEmailHandler} isRequired={true} inputType='email' placeholder={'이메일을 입력해주세요'}/>
-                <InputContainer labelName='비밀번호' onChange={changePasswordHandler} isRequired={true} inputType='password' placeholder={'비밀번호를 입력해주세요'}/>
-                <InputContainer labelName='비밀번호 재확인' onChange={changeRePasswordHandler} isRequired={true} inputType='password' placeholder={'비밀번호를 다시 입력해주세요'}/>
-                <InputContainer labelName='이름' onChange={changeNameHandler}  inputType='text' placeholder={'이름을 입력해주세요'}/>
-                <InputContainer labelName='나이' onChange={changeAgeHandler}  inputType='number' placeholder={'나이를 입력해주세요'}/>
+                <InputContainer labelName='이메일' onChange={changeEmailHandler} isRequired={true} inputType='email' placeholder={'이메일을 입력해주세요'} text={email}/>
+                <InputContainer labelName='비밀번호' onChange={changePasswordHandler} isRequired={true} inputType='password' placeholder={'비밀번호를 입력해주세요'} text={password}/>
+                <InputContainer labelName='비밀번호 재확인' onChange={changeRePasswordHandler} isRequired={true} inputType='password' placeholder={'비밀번호를 다시 입력해주세요'} text={rePassword}/>
+                <InputContainer labelName='이름' onChange={changeNameHandler}  inputType='text' placeholder={'이름을 입력해주세요'} text={name}/>
+                <InputContainer labelName='나이' onChange={changeAgeHandler}  inputType='number' placeholder={'나이를 입력해주세요'} text={age}/>
                 <Button type='submit'/>
             </form>
         </div>
