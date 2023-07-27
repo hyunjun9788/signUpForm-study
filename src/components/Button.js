@@ -11,10 +11,10 @@ const SignUpBt = styled.button`
   font-weight: bold;
   width:230px;
 `
-function Button({type}){
+function Button({type,onClick}){
     return(
 
-        <SignUpBt type={type} className='signup-bt'>가입하기</SignUpBt>
+        <SignUpBt onClick={onClick} type={type} className='signup-bt'>가입하기</SignUpBt>
 
     )
 }
